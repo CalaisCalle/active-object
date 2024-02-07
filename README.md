@@ -1,23 +1,17 @@
-# CMake Template
+# Active Object
 
-Whenever I get back into C++, I always end up wanting to use CMake as my build system (it's what I'm used to, don't judge me).
-The problem is: I'm not exactly great with CMake.
-As a consequence, the first thing I have to do with every project is a lot of googling to understand cmake again.
+This is the result of trying to replicate something I saw at work.
+The active object has a queue of function objects that are executed by the running policy.
+There's also a method, `dispatch_async` that can be used to add any function to the queue.
 
-There are existing CMake templates out there (e.g. Jason Turner's), but when I wrote this I was just starting out and found them hard to pick through at times.
-I also wanted to understand exactly what was going on in these templates, without relying too much on those prior templates.
-Plus, I have a weird hangup about using external libraries which has somehow managed to extend its way to templates:
-if I didn't make it, I don't want it.
+## What's the Point?
 
-This gets very irritating when there's a library that does what I want to do 100x better than my s***** implementation, but I get stubborn.
+I've not used a thread-safe queue here (I can change that in a future update), but the Active object can be used to quickly create multiple objects that need to asynchronously access/modify data in a thread-safe way.
+For instance: a tcp server may need to send out messages to clients without interrupting execution in the main thread.
 
-So there are two reasons for this template to exist:
+Beyond that, the point was to understand something that was new to me in C++.
+I'm honestly amazed it works at all (although it will probably break at some point).
 
- 1. To give me a basic starting point for CMake/C++ projects (and I mean REALLY basic)
- 2. To act as something of a reminder on how to set up CMake projects.
-
-I fully expect this template to get more complex with time as I find things in other projects I find useful.
-For now, this should act as a reasonable jumping-off point.
 
 ## Things to do:
 
@@ -28,4 +22,4 @@ For now, this should act as a reasonable jumping-off point.
 
 ## Acknowledgements
 
-Just to quickly note: I stole the clang-format file from Jason Turner, and I use his template as a reference a lot of the time.
+Just to quickly note: I stole the clang-format file from Jason Turner, then modified it to suit me tbh.
