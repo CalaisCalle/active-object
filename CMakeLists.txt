@@ -1,0 +1,7 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 3.22)
+
+project(project)
+
+set(DCMAKE_EXPORT_COMPILE_COMMANDS_ON)
+
+add_subdirectory(src)
